@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:Save_the_Humans"
         mc:Ignorable="d"
         Title="Save the Humans" Height="700" Width="1000">
+    <Window.Resources>
+        <ControlTemplate x:Key="EnemyTemplate" TargetType="{x:Type ContentControl}">
+            <Grid>
+                <Ellipse Fill="#FF97FF00" Height="100" Stroke="Black" Width="100"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid HorizontalAlignment="Right" Width="992">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140"/>
@@ -19,8 +26,8 @@
         <Button x:Name="startButton" Content="Start!" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="1"/>
         <ProgressBar Grid.Column="1" Grid.Row="1" Height="20"/>
         <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="1">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Avoid These" VerticalAlignment="Top" FontSize="18" Margin="0,0,11,0"/>
-            <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Avoid These" FontSize="18" Foreground="White" Background="#FF001970"/>
+            <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Top" Template="{DynamicResource EnemyTemplate}"/>
         </StackPanel>
         <Canvas x:Name="playArea" Grid.ColumnSpan="3">
             <Canvas.Background>
@@ -29,7 +36,11 @@
                     <GradientStop Color="#FF001EDA" Offset="1"/>
                 </LinearGradientBrush>
             </Canvas.Background>
+            <StackPanel x:Name="human" Orientation="Vertical">
+                <Ellipse Fill="White" Height="10" Width="10" Stroke="Black"/>
+                <Rectangle Fill="White" Height="25" Width="10" Stroke="Black"/>
+            </StackPanel>
         </Canvas>
-        
+
     </Grid>
 </Window>
