@@ -30,6 +30,6 @@
                 </LinearGradientBrush>
             </Canvas.Background>
         </Canvas>
-
+        
     </Grid>
 </Window>
