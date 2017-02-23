@@ -36,6 +36,7 @@ namespace Save_the_Humans
         private void AddEnemy()
         {
             ContentControl enemy = new ContentControl();
+            enemy.Template = Resources["EnemyTemplate"] as ControlTemplate;
             AnimatedEnemy(enemy, 0, playArea.ActualWidth - 100, "(Canvas.Left)");
             AnimatedEnemy(enemy, rnd.Next((int)playArea.ActualHeight - 100), rnd.Next((int)playArea.ActualHeight - 100), "(Canvas.Top)");
             playArea.Children.Add(enemy);

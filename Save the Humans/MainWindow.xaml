@@ -40,7 +40,6 @@
                 <Ellipse Fill="White" Height="10" Width="10" Stroke="Black"/>
                 <Rectangle Fill="White" Height="25" Width="10" Stroke="Black"/>
             </StackPanel>
-            <TextBox x:Name="txtbxGameOver" TextWrapping="Wrap" Text="Game Over" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF00F3FF" TextChanged="textBox_TextChanged" FontSize="24" FontWeight="Bold" FontStyle="Italic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Canvas.Left="415" Canvas.Top="225" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Rectangle x:Name="rctTarget" Height="50" Canvas.Left="449" Stroke="Black" Canvas.Top="360" Width="50" RenderTransformOrigin="0.5,0.5">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
@@ -57,6 +56,7 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+            <TextBlock x:Name="gameOverText" Canvas.Left="417" TextWrapping="Wrap" Text="Game Over" Canvas.Top="187" Foreground="#FF00D6C3" FontSize="24" FontWeight="Bold" FontStyle="Italic" FontFamily="Arial"/>
         </Canvas>
 
     </Grid>
