@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Save_the_Humans
 {
@@ -23,14 +24,49 @@ namespace Save_the_Humans
     {
         Random rnd = new Random();
 
+        DispatcherTimer enemyTimer = new DispatcherTimer();
+        DispatcherTimer targetTimer = new DispatcherTimer();
+        bool humanCaptured = false;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            enemyTimer.Tick += EnemyTimer_Tick;
+            enemyTimer.Interval = TimeSpan.FromSeconds(2);
+
+            targetTimer.Tick += TargetTimer_Tick;
+            targetTimer.Interval = TimeSpan.FromSeconds(.1);
+        }
+
+        private void TargetTimer_Tick(object sender, EventArgs e)
+        {
+            progressBar.Value += 1;
+            if(progressBar.Value >= progressBar.Maximum)
+                EndTheGame();
+        }
+
+        private void EnemyTimer_Tick(object sender, EventArgs e)
+        {
+            AddEnemy();
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            AddEnemy();
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            human.IsHitTestVisible = true;
+            humanCaptured = false;
+            progressBar.Value = 0;
+            btnStart.Visibility = Visibility.Collapsed;
+            playArea.Children.Clear();
+            playArea.Children.Add(rctTarget);
+            playArea.Children.Add(human);
+            enemyTimer.Start();
+            targetTimer.Start();
         }
 
         private void AddEnemy()
@@ -61,6 +97,18 @@ namespace Save_the_Humans
             Storyboard.SetTargetProperty(animation, new PropertyPath(propertyToAnimate));
             storyboard.Children.Add(animation);
             storyboard.Begin();
+        }
+
+        private void EndTheGame()
+        {
+            if (!playArea.Children.Contains(gameOverText))
+            {
+                enemyTimer.Stop();
+                targetTimer.Stop();
+                humanCaptured = false;
+                btnStart.Visibility = Visibility.Visible;
+                playArea.Children.Add(gameOverText);
+            }
         }
     }
 }
