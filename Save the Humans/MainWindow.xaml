@@ -13,7 +13,7 @@
             </Grid>
         </ControlTemplate>
     </Window.Resources>
-    <Grid HorizontalAlignment="Right" Width="992">
+    <Grid x:Name="grid" HorizontalAlignment="Right" Width="992">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140"/>
             <ColumnDefinition Width="1*"/>
@@ -29,18 +29,18 @@
             <TextBlock x:Name="txtblckAvoidThese" TextWrapping="Wrap" Text="Avoid These" FontSize="18" Foreground="White" Background="#FF001970"/>
             <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Top" Template="{DynamicResource EnemyTemplate}"/>
         </StackPanel>
-        <Canvas x:Name="playArea" Grid.ColumnSpan="3">
+        <Canvas x:Name="playArea" Grid.ColumnSpan="3" MouseLeave="playArea_MouseLeave" MouseMove="playArea_MouseMove">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
                     <GradientStop Color="#FF001EDA" Offset="1"/>
                 </LinearGradientBrush>
             </Canvas.Background>
-            <StackPanel x:Name="human" Orientation="Vertical">
+            <StackPanel x:Name="human" Orientation="Vertical" MouseDown="human_MouseDown">
                 <Ellipse Fill="White" Height="10" Width="10" Stroke="Black"/>
                 <Rectangle Fill="White" Height="25" Width="10" Stroke="Black"/>
             </StackPanel>
-            <Rectangle x:Name="rctTarget" Height="50" Canvas.Left="449" Stroke="Black" Canvas.Top="360" Width="50" RenderTransformOrigin="0.5,0.5">
+            <Rectangle x:Name="rctTarget" Height="50" Canvas.Left="449" Stroke="Black" Canvas.Top="360" Width="50" RenderTransformOrigin="0.5,0.5" MouseEnter="rctTarget_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
