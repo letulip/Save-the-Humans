@@ -56,11 +56,11 @@
                     <GradientStop Color="#FF001EDA" Offset="1"/>
                 </LinearGradientBrush>
             </Canvas.Background>
-            <StackPanel x:Name="human" Orientation="Vertical" MouseDown="human_MouseDown">
+            <StackPanel x:Name="human" Orientation="Vertical" MouseDown="human_MouseDown" Canvas.Left="75" Canvas.Top="45">
                 <Ellipse Fill="White" Height="10" Width="10" Stroke="Black"/>
                 <Rectangle Fill="White" Height="25" Width="10" Stroke="Black"/>
             </StackPanel>
-            <Rectangle x:Name="rctTarget" Height="50" Canvas.Left="449" Stroke="Black" Canvas.Top="360" Width="50" RenderTransformOrigin="0.5,0.5" MouseEnter="rctTarget_MouseEnter">
+            <Rectangle x:Name="rctTarget" Height="50" Canvas.Left="455" Stroke="Black" Canvas.Top="334" Width="50" RenderTransformOrigin="0.5,0.5" MouseEnter="rctTarget_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
