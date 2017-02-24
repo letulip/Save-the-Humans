@@ -9,7 +9,27 @@
     <Window.Resources>
         <ControlTemplate x:Key="EnemyTemplate" TargetType="{x:Type ContentControl}">
             <Grid>
-                <Ellipse Fill="#FF97FF00" Height="100" Stroke="Black" Width="100"/>
+                <Ellipse Fill="#FF97FF00" Height="100" Width="75" Stroke="Black"/>
+                <Ellipse Fill="Black" HorizontalAlignment="Center" Height="35" Margin="12,20,42,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-20"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Ellipse Fill="Black" HorizontalAlignment="Center" Height="35" Margin="42,20,12,0" Stroke="Black" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="20"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
             </Grid>
         </ControlTemplate>
     </Window.Resources>
@@ -26,8 +46,8 @@
         <Button x:Name="btnStart" Content="Start!" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="1" Click="btnStart_Click"/>
         <ProgressBar x:Name="progressBar" Grid.Column="1" Grid.Row="1" Height="20"/>
         <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="1">
-            <TextBlock x:Name="txtblckAvoidThese" TextWrapping="Wrap" Text="Avoid These" FontSize="18" Foreground="White" Background="#FF001970"/>
-            <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Top" Template="{DynamicResource EnemyTemplate}"/>
+            <TextBlock x:Name="txtblckAvoidThese" TextWrapping="Wrap" Text="Avoid These" TextAlignment="Center" FontSize="18" Foreground="White" Background="#FF001970"/>
+            <ContentControl HorizontalAlignment="Center" Margin="43,0,43,0" VerticalAlignment="Center" Template="{DynamicResource EnemyTemplate}" RenderTransformOrigin="0.293,0.51"/>
         </StackPanel>
         <Canvas x:Name="playArea" Grid.ColumnSpan="3" MouseLeave="playArea_MouseLeave" MouseMove="playArea_MouseMove">
             <Canvas.Background>
